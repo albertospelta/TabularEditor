@@ -243,7 +243,7 @@ namespace TabularEditor.UI
 
             //return methods
             foreach (var mi in type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                .Where(m => !m.IsSpecialName && m.DeclaringType != typeof(object)).AsEnumerable())
+                .Where(m => !m.IsSpecialName && m.DeclaringType != typeof(object)).OrderBy((m) => m.Name))
             {
                 if (mi.GetCustomAttribute<IntelliSenseAttribute>() == null) continue;
                 switch (mi.Name)
